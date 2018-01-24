@@ -11,6 +11,17 @@ namespace HelloWorld
         static void Main( string[] args )
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
+
+            Console.WriteLine("did it work?");
+
+            Console.WriteLine("I guess so it says it is doing the thing");
+
+            Console.WriteLine("okay, good.");
+
+
+
         }
     }
 }
