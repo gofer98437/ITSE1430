@@ -16,6 +16,9 @@ namespace HelloWorld
 
             Console.WriteLine("jesus christ this is overly complex");
 
+            Console.WriteLine("I think I got it though");
+
+
         }
     }
 }
