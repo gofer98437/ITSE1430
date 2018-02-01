@@ -1,4 +1,16 @@
-﻿using System;
+﻿/* Chas Pena
+ * ITSE 1430
+ * 
+ * Section 1
+ * 
+ * 
+ */
+
+
+
+
+
+using System;
 using System.Collections;
 
 namespace Nile.Host
@@ -12,9 +24,9 @@ namespace Nile.Host
             {
                 //display
                 char choice = DisplayMenu();
-
+                
                 //process
-                switch (choice)
+                switch (Char.ToUpper(choice))
                 {
                     case 'L': ListProducts();
                     break;
@@ -43,14 +55,14 @@ namespace Nile.Host
                 Console.Write(message);
                 string value = Console.ReadLine();
 
-                if(Decimal.TryParse(value, out decimal result));
+                if(Decimal.TryParse(value, out decimal result))
                 {
                     if (result >= minValue)
                         return result;
 
                 }
 
-
+                //string msg = String.Format("Value must be >= {0}" + minValue)
                 Console.WriteLine("Value must be >= {0}" + minValue);
             } while (true);
         }
@@ -71,11 +83,19 @@ namespace Nile.Host
 
         static void ListProducts()
         {
-            if (_name != null && _name != "")
+            //if (_name != null && _name != "")
+            if (!String.IsNullOrEmpty(_name))
             {
-                Console.WriteLine(_name);
-                Console.WriteLine(_price);
-                Console.WriteLine(_description);
+                //display product
+
+
+                //var msg = String.Format("{0} [${1}]", _name, _price);
+                string msg = $"{_name} [${_price}]";
+                Console.WriteLine(msg);
+
+
+                if (!String.IsNullOrEmpty(_description))
+                    Console.WriteLine(_description);
             } else
                 Console.WriteLine("No products");
         }
@@ -95,6 +115,18 @@ namespace Nile.Host
                     "Q)uit\n");
 
                 string input = Console.ReadLine();
+
+                input = input.Trim();
+
+                //padding 
+                //input = input.PadLeft(10)
+
+                //starts with
+                //input.StartsWith(@"\");
+                //input.EndsWith(@"\");
+                
+                //input.ToLower();
+                input = input.ToUpper();
 
                 if (input == "L")
                     return input[0];
