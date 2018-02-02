@@ -16,14 +16,22 @@ namespace ChasPena.MovieLib.Host
 
             List<string> filmList = new List<string>{"None"};
 
-
             Console.WriteLine("\nPlease enter the name of the Film: ");
             filmTitle = Console.ReadLine();
+            Console.WriteLine("Title: ", filmTitle);
 
-
+            mainMenu = true;                                        //temp
 
             while (mainMenu == true)
             {
+
+                Console.WriteLine("Main Menu/n/n" +
+                    "1) Add a film to the collection./n " +
+                    "2) Remove a film from the collection." +
+                    "3) View all films in the collection./n" +
+                    "4) Exit");
+
+                choice = Console.Read();
 
                 switch (choice)
                 {
@@ -39,10 +47,10 @@ Until the user selects the option to exit, keep displaying the menu and performi
 */
                     case 1:
                         {
-                            foreach(string Str in filmList)
+                            foreach(string f in filmList)
                             {
-                                Console.WriteLine("Just testing");
-                                return;
+                                Console.WriteLine("/nJust testing/n");
+                                
                             }
                             break;
                         }
