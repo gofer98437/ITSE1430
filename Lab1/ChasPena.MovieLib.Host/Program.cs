@@ -62,7 +62,7 @@ Until the user selects the option to exit, keep displaying the menu and performi
                     default:
                     break;
                 }
-
+                 
 
             }
         }
@@ -71,142 +71,142 @@ Until the user selects the option to exit, keep displaying the menu and performi
 
 
 
+//============================================================================================================
 
 
 
-//using System;
-//using System.Collections;
+namespace Nile.Host
+{
+    class Program
+    {
+        static void Main( string[] args )
+        {
+            bool quit = false;
+            while (!quit)
+            {
+                int choice = DisplayMenu();
 
-//namespace Nile.Host
-//{
-//    class Program
-//    {
-//        static void Main( string[] args )
-//        {
-//            bool quit = false;
-//            while (!quit)
-//            {
-//                display
-//                char choice = DisplayMenu();
+                switch (choice)
+                {
+                    case '1':
+                    ListFilms();
+                    break;
+                    case '2':
+                    AddFilm();
+                    break;
+                    case '3':
+                    quit = true;
+                    break;
+                };
+            };
+        }
 
-//                process
-//                switch (Char.ToUpper(choice))
-//                {
-//                    case 'L':
-//                    ListProducts();
-//                    break;
-//                    case 'A':
-//                    AddProduct();
-//                    break;
-//                    case 'Q':
-//                    quit = true;
-//                    break;
-//                };
-//            };
-//        }
+        static void AddFilm()
+        {
+            _name = ReadString("Enter name: ", true);
 
-//        static void AddProduct()
-//        {
-//            _name = ReadString("Enter name: ", true);
+            _price = ReadDecimal("Enter price: ", 0);
 
-//            _price = ReadDecimal("Enter price: ", 0);
-
-//            _description = ReadString("Enter optional description", false);
-//        }
+            _description = ReadString("Enter optional description", false);
+        }
 
 
-//        private static decimal ReadDecimal( string message, decimal minValue )
-//        {
-//            do
-//            {
-//                Console.Write(message);
-//                string value = Console.ReadLine();
+        private static decimal ReadDecimal( string message, decimal minValue )
+        {
+            do
+            {
+                Console.Write(message);
+                string value = Console.ReadLine();
 
-//                if (Decimal.TryParse(value, out decimal result))
-//                {
-//                    if (result >= minValue)
-//                        return result;
+                if (Decimal.TryParse(value, out decimal result))
+                {
+                    if (result >= minValue)
+                        return result;
 
-//                }
+                }
 
-//                string msg = String.Format("Value must be >= {0}" + minValue)
-//                Console.WriteLine("Value must be >= {0}" + minValue);
-//            } while (true);
-//        }
-
-
-//        private static string ReadString( string message, bool isRequired )
-//        {
-//            do
-//            {
-//                Console.Write(message);
-//                string value = Console.ReadLine();
-//                if (!isRequired || value != "")
-//                    return value;
-
-//                Console.WriteLine("Value is Required");
-//            } while (true);
-//        }
-
-//        static void ListProducts()
-//        {
-//            if (_name != null && _name != "")
-//                if (!String.IsNullOrEmpty(_name))
-//                {
-//                    display product
-    
-
-//                var msg = String.Format("{0} [${1}]", _name, _price);
-//                    string msg = $"{_name} [${_price}]";
-//                    Console.WriteLine(msg);
+                string msg = String.Format("Value must be >= {0}" + minValue);
+                Console.WriteLine("Value must be >= {0}" + minValue);
+            } while (true);
+        }
 
 
-//                    if (!String.IsNullOrEmpty(_description))
-//                        Console.WriteLine(_description);
-//                } else
-//                    Console.WriteLine("No products");
-//        }
+        private static string ReadString( string message, bool isRequired )
+        {
+            do
+            {
+                Console.Write(message);
+                string value = Console.ReadLine();
+                if (!isRequired || value != "")
+                    return value;
 
-//        product data
-//        static string _name;
-//        static decimal _price;
-//        static string _description;
+                Console.WriteLine("Value is Required");
+            } while (true);
+        }
+
+        static void ListFilms()
+        {
+            if (_name != null && _name != "")
+                if (!String.IsNullOrEmpty(_name))
+                {
 
 
-//        private static char DisplayMenu()
-//        {
-//            do
-//            {
-//                Console.WriteLine("L)ist product\n" +
-//                    "A)dd product\n" +
-//                    "Q)uit\n");
+                    //var msg = String.Format("{0} [${1}]", _name, _price);
+                    string msg = $"{_name} [${_price}]";
+                    Console.WriteLine(msg);
 
-//                string input = Console.ReadLine();
 
-//                input = input.Trim();
+                    if (!String.IsNullOrEmpty(_description))
+                        Console.WriteLine(_description);
+                } else
+                    Console.WriteLine("No Films");
+        }
 
-//                padding
-//                input = input.PadLeft(10)
+        static string _name;
+        static decimal _price;
+        static string _description;
 
-//                starts with
-//                input.StartsWith(@"\");
-//                input.EndsWith(@"\");
 
-//                input.ToLower();
-//                input = input.ToUpper();
+        private static int DisplayMenu()
+        {
+            do
+            {
 
-//                if (input == "L")
-//                    return input[0];
-//                else if (input == "A")
-//                    return input[0];
-//                else if (input == "Q")
-//                    return input[0];
+                Console.WriteLine("Main Menu/n/n" +
+                                    "1) Add a film to the collection./n " +
+                                    "2) Remove a film from the collection./n" +
+                                    "3) View all films in the collection./n" +
+                                    "4) Exit");
 
-//                Console.Write("\nPlease choose a valid option");
+                int choice = (Console.Read());
 
-//            } while (true);
-//        }
+                
+                
+                //choice = choice.Trim();
 
+                //input = input.PadLeft(10)
+
+                //input.StartsWith(@"\");
+                //input.EndsWith(@"\");
+
+                //input.ToLower();
+
+                if (choice == 1)
+                    return choice;
+                else if (choice == 2)
+                    return choice;
+                else if (choice == 3)
+                    return choice;
+                else if (choice == 4)
+                    return choice;
+
+
+                Console.Write("\nPlease choose a valid option");
+
+            } while (true);
+        }
+    }
+}
 
 
 
