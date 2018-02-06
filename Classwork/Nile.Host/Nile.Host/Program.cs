@@ -207,5 +207,35 @@ namespace Nile.Host
 
         }
 
+        static void PlayingWithReferences()
+        {
+            string message = "hello";
+            string name = null;
+
+            name = new string('*', 10);
+
+            object instance = name;
+
+            if (instance is string)
+            {
+                string str = (string)instance;
+                Console.WriteLine(str);
+            }else
+                Console.WriteLine("not a string")
+
+            string str2 = instance as string;
+
+            //pattern matching
+            if (instance is string str3)
+            {
+                
+            }
+
+            
+
+        }
     }
 }
+
+
+
