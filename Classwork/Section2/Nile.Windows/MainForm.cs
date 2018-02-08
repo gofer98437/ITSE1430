@@ -23,11 +23,18 @@ namespace Nile.Windows
 
 
             var product = new Product();
-            product.Name = "Product A";
 
-            
+            var name = product.GetName();
+
+            product.SetName("Product A");
+            var error = product.Validate();
+
+
+            var str = product.ToString();
+
             var productB = new Product();
-            productB.Name = "Product B";
+            //productB.SetName("Product B");
+            error = productB.Validate();
 
         }
     }
