@@ -19,8 +19,10 @@ namespace Nile.Host
             bool quit = false;
             while (!quit)
             {
-                int choice = DisplayMenu();
+                Console.Clear();
 
+                int choice = DisplayMenu();
+                
                 switch (choice)
                 {
                     case '1':
@@ -42,18 +44,18 @@ namespace Nile.Host
 
         static void AddFilm()
         {
-            _name = ReadString("Enter name: ", true);
+            _title = ReadString("Enter the title of the film: ", true);
 
             _length = ReadDecimal("Enter price: ", 0);
 
-            _description = ReadString("Enter optional description: ", false);
+            _description = ReadString("Enter description: ", false);
 
-            _owned = ReadBool("Do you own this film (Y/N): ");
+            _owned = ReadBool("Do you own this film (Y/N): ", true);
         }
 
         private static void RemoveFilm()
         {
-            _name = "";
+            _title = "";
 
             _length = 0;
 
@@ -74,8 +76,9 @@ namespace Nile.Host
                 {
                     string msg = String.Format("Value must be >= {0}" + minValue);
                     Console.WriteLine("Value must be >= {0}" + minValue);
+                }
 
-                }else if (result >= minValue)
+                if (result >= minValue)
                     return result;
 
             } while (true);
@@ -95,20 +98,38 @@ namespace Nile.Host
             } while (true);
         }
 
-        private static bool ReadBool( string v )
+        private static bool ReadBool( string message, bool isRequired )
         {
-            throw new NotImplementedException();
+            do
+            {
+                Console.Write(message);
+                string value = Console.ReadLine();
+
+                if (String.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("Please choose a valid option.");
+                    Console.Read();
+                    Console.Clear();
+                    continue;
+
+                }
+
+                value = value.ToLower();
+
+                if (value[0] == 'y')
+                    return true;
+                else if (value[0] == 'n')
+                    return false;
+
+            } while (true);
         }
 
         static void ListFilms()
         {
-            if (_name != null && _name != "")
-                if (!String.IsNullOrEmpty(_name))
+            if (_title != null && _title != "")
+                if (!String.IsNullOrEmpty(_title))
                 {
-
-
-                    //var msg = String.Format("{0} [${1}]", _name, _price);
-                    string msg = $"{_name} [${_length}]";
+                    string msg = $"{_title} [${_length}]";
                     Console.WriteLine(msg);
 
 
@@ -116,9 +137,11 @@ namespace Nile.Host
                         Console.WriteLine(_description);
                 } else
                     Console.WriteLine("No Films");
+
+            Console.Read();
         }
 
-        static string _name;
+        static string _title;
         static decimal _length;
         static string _description;
         static bool _owned;
