@@ -22,16 +22,19 @@ namespace Nile.Host
                 Console.Clear();
 
                 int choice = DisplayMenu();
-                
+
                 switch (choice)
                 {
                     case '1':
+                    Console.Clear();
                     AddFilm();
                     break;
                     case '2':
+                    Console.Clear();
                     RemoveFilm();
                     break;
                     case '3':
+                    Console.Clear();
                     ListFilms();
                     break;
                     case '4':
@@ -46,7 +49,7 @@ namespace Nile.Host
         {
             _title = ReadString("Enter the title of the film: ", true);
 
-            _length = ReadDecimal("Enter price: ", 0);
+            _length = ReadDecimal("Enter the length in hours: ", 0);
 
             _description = ReadString("Enter description: ", false);
 
@@ -76,6 +79,8 @@ namespace Nile.Host
                 {
                     string msg = String.Format("Value must be >= {0}" + minValue);
                     Console.WriteLine("Value must be >= {0}" + minValue);
+                    Console.Read();
+                    continue;
                 }
 
                 if (result >= minValue)
@@ -92,9 +97,14 @@ namespace Nile.Host
                 Console.Write(message);
                 string value = Console.ReadLine();
                 if (!isRequired || value != "")
-                    return value;
+                {
+                    Console.WriteLine("Value is Required");
+                    Console.Read();
+                    continue;
+                }
+                return value;
 
-                Console.WriteLine("Value is Required");
+
             } while (true);
         }
 
@@ -111,7 +121,6 @@ namespace Nile.Host
                     Console.Read();
                     Console.Clear();
                     continue;
-
                 }
 
                 value = value.ToLower();
