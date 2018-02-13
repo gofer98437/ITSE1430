@@ -21,21 +21,36 @@ namespace Nile.Windows
         {
             base.OnLoad(e);
 
+            //PlayingWithProductMembers();
 
+        }
+        private void PlayingWithProductMembers()
+        {
             var product = new Product();
 
-            var name = product.GetName();
+            Decimal.TryParse("123", out var price);
+            product.Price = price;
 
-            product.SetName("Product A");
+            var name = product.Name;
+            product.Name = "Product A";
+            product.Price = 50;
+
+            product.IsDiscontinued = true;
+
+
+            //product.ActualPrice = 10;
+            var price2 = product.ActualPrice;
+
+
             var error = product.Validate();
-
-
             var str = product.ToString();
 
             var productB = new Product();
             //productB.SetName("Product B");
             error = productB.Validate();
 
+
         }
+
     }
 }

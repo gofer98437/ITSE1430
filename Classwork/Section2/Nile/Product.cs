@@ -13,24 +13,55 @@ namespace Nile
     {
         internal decimal DiscountPercentage = 0.10M;
 
-        /// <summary>
-        ///     Gets the product name
-        /// </summary>
-        /// <returns>The name</returns>
-        public string GetName()
+        public string Name
         {
-            return _name ?? "";
+            get { return _name ?? ""; }
+            set { _name = value ?? ""; }
         }
 
-        /// <summary>
-        ///     Sets the product name
-        /// </summary>
-        /// <param name="value">The name</param>
-        public void SetName(string value)
+        public string Description
         {
-            _name = value ?? "";
+            get { return _description ?? ""; }
+            set { _description = value ?? ""; }
         }
 
+        //auto-propertys
+        public decimal Price
+        { get; set; } = 0;
+
+
+        public decimal ActualPrice
+        {
+            get
+            {
+                if (IsDiscontinued)
+                    return Price - (Price * DiscountPercentage);
+
+                return Price;
+            }
+            set { }
+        }
+        public bool IsDiscontinued { get; set; }
+
+        ///// <summary>
+        /////     Gets the product name
+        ///// </summary>
+        ///// <returns>The name</returns>
+
+
+        //public string GetName()
+        //{
+        //    return _name ?? "";
+        //}
+
+        ///// <summary>
+        /////     Sets the product name
+        ///// </summary>
+        ///// <param name="value">The name</param>
+        //public void SetName(string value)
+        //{
+        //    _name = value ?? "";
+        //}
 
 
         /// <summary>
@@ -41,15 +72,15 @@ namespace Nile
         {
             if (String.IsNullOrEmpty(_name))
                 return "name cannot be empty";
-            if (_price < 0)
+            if (Price < 0)
                 return "Price must be >= 0";
             return "";
         }
 
         string _name = "";
         string _description;
-        decimal _price;
-        bool _isDiscontenued;
+        //decimal _price;
+        //bool _isDiscontenued;
 
 
     }
