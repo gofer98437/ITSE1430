@@ -9,11 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Nile.Host
 {
     class Program
     {
+        static string _title;
+        static decimal _length;
+        static string _description;
+        static bool _owned;
+
         static void Main( string[] args )
         {
             bool quit = false;
@@ -44,7 +48,6 @@ namespace Nile.Host
             };
         }
 
-
         static void AddFilm()
         {
             _title = ReadString("Enter the title of the film: ", true);
@@ -65,7 +68,6 @@ namespace Nile.Host
             _description = "";
 
             _owned = false;
-
         }
 
         private static decimal ReadDecimal( string message, decimal minValue )
@@ -77,9 +79,7 @@ namespace Nile.Host
 
                 if (!Decimal.TryParse(value, out decimal result))
                 {
-                    string msg = String.Format("Value must be >= {0}" + minValue);
-                    Console.WriteLine("Value must be >= {0}" + minValue);
-                    Console.Read();
+                    Console.WriteLine($"\nValue must be >= {minValue}");
                     continue;
                 }
 
@@ -89,21 +89,19 @@ namespace Nile.Host
             } while (true);
         }
 
-
         private static string ReadString( string message, bool isRequired )
         {
             do
             {
                 Console.Write(message);
                 string value = Console.ReadLine();
-                if (!isRequired || value != "")
-                {
-                    Console.WriteLine("Value is Required");
-                    Console.Read();
-                    continue;
-                }
-                return value;
 
+                if (isRequired || !String.IsNullOrEmpty(value))
+                {
+                    return value;
+                } else
+                    Console.WriteLine("\nA value is Required");
+                continue;
 
             } while (true);
         }
@@ -117,9 +115,9 @@ namespace Nile.Host
 
                 if (String.IsNullOrEmpty(value))
                 {
-                    Console.WriteLine("Please choose a valid option.");
+                    Console.WriteLine("\nPlease choose a valid option.");
                     Console.Read();
-                    Console.Clear();
+                    //Console.Clear();
                     continue;
                 }
 
@@ -130,37 +128,28 @@ namespace Nile.Host
                 else if (value[0] == 'n')
                     return false;
 
+
             } while (true);
         }
 
         static void ListFilms()
         {
-            if (_title != null && _title != "")
-                if (!String.IsNullOrEmpty(_title))
-                {
-                    string msg = $"{_title} [${_length}]";
-                    Console.WriteLine(msg);
-
-
-                    if (!String.IsNullOrEmpty(_description))
-                        Console.WriteLine(_description);
-                } else
-                    Console.WriteLine("No Films");
-
-            Console.Read();
+            if (!String.IsNullOrEmpty(_title))// ?? "";
+            {
+                string msg = $"{_title}: {_length} hours";
+                Console.WriteLine(msg);
+                
+                if (!String.IsNullOrEmpty(_description))
+                    Console.WriteLine(_description);
+            } else
+                Console.WriteLine("No Films");
+            //Console.Clear();
         }
-
-        static string _title;
-        static decimal _length;
-        static string _description;
-        static bool _owned;
-
 
         private static char DisplayMenu()
         {
             do
             {
-
                 Console.WriteLine("Main Menu");
                 Console.WriteLine("1) Add a film to the collection.");
                 Console.WriteLine("2) Remove a film from the collection.");
@@ -168,6 +157,11 @@ namespace Nile.Host
                 Console.WriteLine("4) Exit");
 
                 string choice = Console.ReadLine();
+
+                if (String.IsNullOrEmpty(choice))
+                {
+                    Console.Write("\nPlease choose____ a valid option");
+                }
 
                 if (choice[0] == '1')
                     return choice[0];
@@ -177,9 +171,6 @@ namespace Nile.Host
                     return choice[0];
                 else if (choice[0] == '4')
                     return choice[0];
-
-
-                Console.Write("\nPlease choose a valid option");
 
             } while (true);
         }
