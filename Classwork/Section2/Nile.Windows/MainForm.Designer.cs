@@ -120,7 +120,7 @@
             // 
             this._mIHelpAbout.Name = "_mIHelpAbout";
             this._mIHelpAbout.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this._mIHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this._mIHelpAbout.Size = new System.Drawing.Size(126, 22);
             this._mIHelpAbout.Text = "About";
             this._mIHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
@@ -133,6 +133,7 @@
             this.MainMenuStrip = this._MainMenu;
             this.Name = "MainForm";
             this.Text = "nile";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this._MainMenu.ResumeLayout(false);
             this._MainMenu.PerformLayout();
             this.ResumeLayout(false);

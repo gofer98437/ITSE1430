@@ -19,6 +19,19 @@ namespace Nile.Windows
 
         public Product Product { get; set; }
 
+        protected override void OnLoad( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            if (Product != null)
+            {
+                _name.Text = Product.Name;
+                _description.Text = Product.Description;
+                _price.Text = Product.Price.ToString();
+                BoxDiscont.Checked = Product.IsDiscontinued;
+            }
+        }
+
         private void label2_Click( object sender, EventArgs e )
         {
 
@@ -37,9 +50,9 @@ namespace Nile.Windows
         {
             //create product
             var product = new Product();
-            product.Name = ProductName.Text;
-            product.Description = ProductDescription.Text;
-            product.Price = ConvertToPrice(ProductPrice);
+            product.Name = _name.Text;
+            product.Description = _description.Text;
+            product.Price = ConvertToPrice(_price);
             product.IsDiscontinued = BoxDiscont.Checked;
 
             Product = product;
@@ -56,6 +69,11 @@ namespace Nile.Windows
         }
 
         private void ProductPrice_TextChanged( object sender, EventArgs e )
+        {
+
+        }
+
+        private void ProductDetailForm_Load( object sender, EventArgs e )
         {
 
         }

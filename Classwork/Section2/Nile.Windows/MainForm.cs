@@ -59,6 +59,8 @@ namespace Nile.Windows
 
         private void OnProductAdd( object sender, EventArgs e )
         {
+            var button = sender as ToolStripMenuItem;
+
             var form = new ProductDetailForm();
             form.Text = "Add Product";
             //Show the form modally
@@ -69,22 +71,37 @@ namespace Nile.Windows
         }
         private void OnProductEdit( object sender, EventArgs e )
         {
-            MessageBox.Show(this, "Not Implemented", "ProductEdit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (_product == null)
+                return;
+            var form = new ProductDetailForm();
+            form.Text = "Edit Product";
+            form.Product = _product;
+
+            //Show the form modally
+            var result = form.ShowDialog(this);
+            if (result != DialogResult.OK)
+                return;
+
+            _product = form.Product;
         }
+
         private void OnProductRemove( object sender, EventArgs e )
         {
             if(!ShowConfirmation("Are you sure you want to remove", "ProductRemove"))
                 return;
 
+            
             //Remove product
             MessageBox.Show("Not Implemented");
+
+            _product = null;
 
         }
 
 
         private void OnFileExit( object sender, EventArgs e )
         {
-            MessageBox.Show(this, "Not Implemented", "FileExit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            Close();
         }
 
         private void OnHelpAbout( object sender, EventArgs e )
@@ -98,5 +115,10 @@ namespace Nile.Windows
             return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
         private Product _product;
+
+        private void MainForm_Load( object sender, EventArgs e )
+        {
+
+        }
     }
 }
