@@ -138,11 +138,12 @@ namespace Nile.Host
             {
                 string msg = $"{_title}: {_length} hours";
                 Console.WriteLine(msg);
-                
+
                 if (!String.IsNullOrEmpty(_description))
                     Console.WriteLine(_description);
             } else
                 Console.WriteLine("No Films");
+            Console.ReadLine();
             //Console.Clear();
         }
 
@@ -150,6 +151,7 @@ namespace Nile.Host
         {
             do
             {
+                Console.Clear();
                 Console.WriteLine("Main Menu");
                 Console.WriteLine("1) Add a film to the collection.");
                 Console.WriteLine("2) Remove a film from the collection.");
@@ -161,6 +163,8 @@ namespace Nile.Host
                 if (String.IsNullOrEmpty(choice))
                 {
                     Console.Write("\nPlease choose____ a valid option");
+
+                    continue;
                 }
 
                 if (choice[0] == '1')
