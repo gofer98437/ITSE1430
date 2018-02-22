@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._name = new System.Windows.Forms.TextBox();
             this._description = new System.Windows.Forms.TextBox();
             this._price = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this._errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // _name
@@ -48,6 +51,7 @@
             this._name.Size = new System.Drawing.Size(166, 20);
             this._name.TabIndex = 0;
             this._name.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this._name.Validating += new System.ComponentModel.CancelEventHandler(this._name_Validating);
             // 
             // _description
             // 
@@ -68,6 +72,7 @@
             this._price.Size = new System.Drawing.Size(106, 20);
             this._price.TabIndex = 2;
             this._price.TextChanged += new System.EventHandler(this.ProductPrice_TextChanged);
+            this._price.Validating += new System.ComponentModel.CancelEventHandler(this._price_Validating);
             // 
             // BoxDiscont
             // 
@@ -94,6 +99,7 @@
             // _buttonCancel
             // 
             this._buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonCancel.CausesValidation = false;
             this._buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._buttonCancel.Location = new System.Drawing.Point(257, 173);
             this._buttonCancel.Name = "_buttonCancel";
@@ -132,10 +138,16 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Price";
             // 
+            // _errorProvider
+            // 
+            this._errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errorProvider.ContainerControl = this;
+            // 
             // ProductDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this._buttonCancel;
             this.ClientSize = new System.Drawing.Size(347, 204);
             this.Controls.Add(this.label3);
@@ -155,6 +167,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Product Details";
             this.Load += new System.EventHandler(this.ProductDetailForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +184,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider _errorProvider;
     }
 }

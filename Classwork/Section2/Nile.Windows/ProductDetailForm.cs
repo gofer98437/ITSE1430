@@ -17,7 +17,25 @@ namespace Nile.Windows
             InitializeComponent();
         }
 
+        public ProductDetailForm(string title) : this()
+        {
+            InitializeComponent();
+            Text = title;
+        }
+        public ProductDetailForm(Product product) : this("Edit Product")
+        {
+            //InitializeComponent();
+            Product = Product;
+        }
+
         public Product Product { get; set; }
+
+        //public virtual DialogResult ShowDialogEx()
+        //{
+        //    return ShowDialog();
+        //}
+
+        //public abstract DialogResult ShowDialogEx();
 
         protected override void OnLoad( EventArgs e )
         {
@@ -30,6 +48,7 @@ namespace Nile.Windows
                 _price.Text = Product.Price.ToString();
                 BoxDiscont.Checked = Product.IsDiscontinued;
             }
+            ValidateChildren();
         }
 
         private void label2_Click( object sender, EventArgs e )
@@ -48,6 +67,10 @@ namespace Nile.Windows
 
         private void OnSave( object sender, EventArgs e )
         {
+            //force validation of childs controls
+            if (!ValidateChildren())
+                return;
+
             //create product
             var product = new Product();
             product.Name = _name.Text;
@@ -55,9 +78,22 @@ namespace Nile.Windows
             product.Price = ConvertToPrice(_price);
             product.IsDiscontinued = BoxDiscont.Checked;
 
+            var message = product.Validate();
+            if (!String.IsNullOrEmpty(message))
+            {
+                DisplayError(message);
+                return;
+            }
+
+
             Product = product;
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void DisplayError(string message)
+        {
+            MessageBox.Show(this, message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private decimal ConvertToPrice (TextBox control)
@@ -76,6 +112,36 @@ namespace Nile.Windows
         private void ProductDetailForm_Load( object sender, EventArgs e )
         {
 
+        }
+
+        private void _name_Validating( object sender, CancelEventArgs e )
+        {
+            var textbox = sender as TextBox;
+
+            if (String.IsNullOrEmpty(textbox.Text))
+            {
+                _errorProvider.SetError(textbox, "Nameis req");
+                e.Cancel = true;
+            } else
+                _errorProvider.SetError(textbox, "");
+
+            
+        }
+
+        private void _price_Validating( object sender, CancelEventArgs e )
+        {
+            var textbox = sender as TextBox;
+
+            var price = ConvertToPrice(textbox);
+
+            if (String.IsNullOrEmpty(textbox.Text))
+            {
+                _errorProvider.SetError(textbox, "Price must be >= 0");
+                e.Cancel = true;
+            } else
+                _errorProvider.SetError(textbox, "");
+
+            
         }
     }
 }
