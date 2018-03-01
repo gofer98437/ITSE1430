@@ -17,66 +17,6 @@ namespace ChasPenaMovieLib.Windows
             InitializeComponent();
         }
 
-        private void FilmDetails_Load( object sender, EventArgs e )
-        {
-            base.OnLoad(e);
-
-        }
-
-        private void OnAdd( object sender, EventArgs e )
-        {
-            //var button = sender as ToolStripMenuItem;
-
-            //var form = new ProductDetailForm("Add Product");
-            ////form.Text = "Add Product";
-            ////Show the form modally
-            //var result = form.ShowDialog(this);
-            //if (result != DialogResult.OK)
-            //    return;
-            //_product = form.Product;
-
-
-        }
-        private void OnEdit( object sender, EventArgs e )
-        {
-            //if (_product == null)
-            //    return;
-            //var form = new ProductDetailForm(_product);
-            ////form.Text = "Edit Product";
-            ////form.Product = _product;
-
-            ////Show the form modally
-            //var result = form.ShowDialog(this);
-            //if (result != DialogResult.OK)
-            //    return;
-
-            //_product = form.Product;
-        }
-        private void OnRemove( object sender, EventArgs e )
-        {
-            //if (!ShowConfirmation("Are you sure you want to remove", "ProductRemove"))
-            //    return;
-
-
-            ////Remove product
-            //MessageBox.Show("Not Implemented");
-
-            //_product = null;
-
-        }
-        private void OnFileExit( object sender, EventArgs e )
-        {
-            Close();
-        }
-        private void OnHelpAbout( object sender, EventArgs e )
-        {
-            //MessageBox.Show(this, "Not Implemented", "HelpAbout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
-        //private bool ShowConfirmation( string message, string title )
-        //{
-        //    //return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-        //}
-
         private void MainForm_Load( object sender, EventArgs e )
         {
 

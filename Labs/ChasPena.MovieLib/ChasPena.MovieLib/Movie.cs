@@ -9,6 +9,12 @@ namespace ChasPena.MovieLib
     /// <summary>
     ///                             Represents a Movie
     /// </summary>
+    /// 
+    //string _name = "";
+    //string _description;
+    //decimal _price;
+    //bool _isDiscontenued;
+
     public class Movie
     {
         public string Title
@@ -19,6 +25,29 @@ namespace ChasPena.MovieLib
         { get; set; }
         public bool Owned
         { get; set; }
+    }
+    //public decimal Price????
+    //{ get; set; } = 0;
+
+    //public decimal ActualPrice???
+    //{
+    //    get
+    //    {
+    //        if (IsDiscontinued)
+    //            return Price - (Price * DiscountPercentage);
+
+    //        return Price;
+    //    }
+    //    set { }
+    //}
+    //public bool IsDiscontinued { get; set; }
+    public string Validate()
+    {
+        if (String.IsNullOrEmpty(_name))
+            return "name cannot be empty";
+        if (Price < 0)
+            return "Price must be >= 0";
+        return "";
     }
 
 }
