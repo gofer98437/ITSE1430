@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using ChasPenaMovieLib;
 namespace ChasPenaMovieLib.Windows
 {
     static class Program
@@ -18,6 +19,8 @@ namespace ChasPenaMovieLib.Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            
+
         }
     }
 }

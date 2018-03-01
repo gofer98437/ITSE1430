@@ -11,9 +11,14 @@ namespace ChasPena.MovieLib
     /// </summary>
     public class Movie
     {
-        string title = "";
-        
-
-
+        public string Title
+        { get; set; }
+        public string Desctiption
+        { get; set; }
+        public int Length
+        { get; set; }
+        public bool Owned
+        { get; set; }
     }
+
 }

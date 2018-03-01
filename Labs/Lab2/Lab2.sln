@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChasPena_MovieLib.Windows", "ChasPenaMovieLib.Windows\ChasPena_MovieLib.Windows.csproj", "{433C3137-997C-4315-8AF3-20BAB66A9695}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChasPenaMovieLib.Windows", "ChasPenaMovieLib.Windows\ChasPenaMovieLib.Windows.csproj", "{433C3137-997C-4315-8AF3-20BAB66A9695}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChasPena.MovieLib", "..\ChasPena.MovieLib\ChasPena.MovieLib\ChasPena.MovieLib.csproj", "{B6AF0D5E-4059-4083-B139-B264EEC43364}"
 EndProject
