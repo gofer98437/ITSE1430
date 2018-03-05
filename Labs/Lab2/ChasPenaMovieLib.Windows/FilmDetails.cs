@@ -7,19 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChasPena.MovieLib;
 
 namespace ChasPenaMovieLib.Windows
 {
     public partial class FilmDetails : Form
     {
-        public FilmDetails()
+        private string v;
+
+
+        public FilmDetails( string v )
         {
-            InitializeComponent();
+            this.v = v;
+        }
+
+        public FilmDetails( Film movie )
+        {
+            this.movie = movie;
         }
 
         private void MainForm_Load( object sender, EventArgs e )
         {
-
+            
         }
 
         private void textBox6_TextChanged( object sender, EventArgs e )

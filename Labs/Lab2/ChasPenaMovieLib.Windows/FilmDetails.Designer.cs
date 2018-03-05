@@ -206,7 +206,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FilmDetails";
             this.Text = "FilmDetails";
-            this.Load += new System.EventHandler(this.FilmDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

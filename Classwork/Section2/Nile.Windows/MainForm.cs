@@ -12,6 +12,7 @@ namespace Nile.Windows
 {
     public partial class MainForm : Form
     {
+        private Product _product;
         public MainForm()
         {
             InitializeComponent();
@@ -115,7 +116,7 @@ namespace Nile.Windows
         {
             return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
-        private Product _product;
+        
 
         private void MainForm_Load( object sender, EventArgs e )
         {

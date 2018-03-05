@@ -15,7 +15,7 @@ namespace ChasPena.MovieLib
     //decimal _price;
     //bool _isDiscontenued;
 
-    public class Movie
+    public class Film
     {
         public string Title
         { get; set; }
@@ -41,13 +41,13 @@ namespace ChasPena.MovieLib
     //    set { }
     //}
     //public bool IsDiscontinued { get; set; }
-    public string Validate()
-    {
-        if (String.IsNullOrEmpty(_name))
-            return "name cannot be empty";
-        if (Price < 0)
-            return "Price must be >= 0";
-        return "";
-    }
+    //public string Validate()
+    //{
+    //    if (String.IsNullOrEmpty(_name))
+    //        return "name cannot be empty";
+    //    if (Price < 0)
+    //        return "Price must be >= 0";
+    //    return "";
+    //}
 
 }
